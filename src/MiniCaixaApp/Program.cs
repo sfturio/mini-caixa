@@ -1,5 +1,5 @@
 ﻿using System;
-
+namespace MiniCaixaApp;
 class Program
 {
     static void Main()

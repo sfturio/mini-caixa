@@ -1,3 +1,4 @@
+namespace MiniCaixaApp;
 public class Produto
 {
     public int Id;
