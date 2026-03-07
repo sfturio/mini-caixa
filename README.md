@@ -25,7 +25,7 @@ Future improvements planned:
 
 - [done] Encapsulation
 - [done] Collections instead of arrays
-- [ ] Interfaces
+- [done] Interfaces
 - [ ] Dependency Injection
 - [ ] LINQ
 - [ ] Better architecture
