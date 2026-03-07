@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="mini-caixa.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/MiniCaixaApp/MiniCaixaApp.csproj" />
+  </Folder>
 </Solution>
