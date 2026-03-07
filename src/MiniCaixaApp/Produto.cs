@@ -1,8 +1,4 @@
-using System.Data.Common;
-using System.IO.Compression;
-using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
+using System.Collections.Generic;
 
 namespace MiniCaixaApp;
 public class Produto
