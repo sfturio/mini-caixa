@@ -23,7 +23,7 @@ The project intentionally starts with **very simple and messy code**, and is gra
 
 Future improvements planned:
 
-- [ ] Encapsulation
+- [done] Encapsulation
 - [ ] Collections instead of arrays
 - [ ] Interfaces
 - [ ] Dependency Injection
