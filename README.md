@@ -28,7 +28,7 @@ Future improvements planned:
 - [done] Interfaces
 - [ ] Dependency Injection
 - [ ] LINQ
-- [ ] Better architecture
+- [done] Better architecture
 
 ## Goal
 
