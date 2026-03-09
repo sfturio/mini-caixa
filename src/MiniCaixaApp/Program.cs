@@ -1,4 +1,5 @@
-﻿using MiniCaixaApp.Controllers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MiniCaixaApp.Controllers;
 using MiniCaixaApp.Interfaces;
 using MiniCaixaApp.Models;
 using MiniCaixaApp.Repositories;
@@ -10,20 +11,25 @@ class Program
 {
     static void Main()
     {
-        List<Produto> produtos = new()
+        var services = new ServiceCollection();
+
+        services.AddSingleton(new List<Produto>
         {
             new Produto { Id = 1, Nome = "Coca 2L", Preco = 10.00m, Estoque = 10 },
             new Produto { Id = 2, Nome = "Pao", Preco = 1.50m, Estoque = 50 },
             new Produto { Id = 3, Nome = "Chocolate", Preco = 6.75m, Estoque = 20 }
-        };
+        });
 
-        IProdutoRepository produtoRepository = new ProdutoRepository(produtos);
-        IVendaRepository vendaRepository = new VendaRepository();
+        services.AddSingleton<IProdutoRepository, ProdutoRepository>();
+        services.AddSingleton<IVendaRepository, VendaRepository>();
 
-        IProdutoService produtoService = new ProdutoService(produtoRepository);
-        IVendaService vendaService = new VendaService(produtoRepository, vendaRepository);
+        services.AddSingleton<IProdutoService, ProdutoService>();
+        services.AddSingleton<IVendaService, VendaService>();
 
-        CaixaController controller = new CaixaController(produtoService, vendaService);
+        services.AddSingleton<CaixaController>();
+
+        using ServiceProvider provider = services.BuildServiceProvider();
+        var controller = provider.GetRequiredService<CaixaController>();
 
         bool rodando = true;
 

@@ -5,27 +5,31 @@ namespace MiniCaixaApp.Services;
 
 public class ProdutoService : IProdutoService
 {
-    private readonly List<Produto> _produtos;
+    private readonly IProdutoRepository _produtoRepository;
 
-    public ProdutoService(List<Produto> produtos)
+    public ProdutoService(IProdutoRepository produtoRepository)
     {
-        _produtos = produtos;
+        _produtoRepository = produtoRepository;
     }
 
     public void ListarProdutos()
     {
+        var produtos = _produtoRepository
+            .ListarTodos()
+            .OrderBy(p => p.Nome)
+            .ToList();
+
         Console.WriteLine("\n--- PRODUTOS ---");
 
-        foreach (var produto in _produtos)
+        foreach (var produto in produtos)
         {
             Console.WriteLine(
-                $"ID: {produto.Id} | Nome: {produto.Nome} | Preço: R$ {produto.Preco:F2} | Estoque: {produto.Estoque}"
-            );
+                $"ID: {produto.Id} | Nome: {produto.Nome} | Preço: R$ {produto.Preco:F2} | Estoque: {produto.Estoque}");
         }
     }
 
     public Produto? BuscarPorId(int id)
     {
-        return _produtos.FirstOrDefault(p => p.Id == id);
+        return _produtoRepository.BuscarPorId(id);
     }
 }
